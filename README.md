@@ -19,8 +19,8 @@ Knowledge graphs combine graph structure with rich, heterogeneous node and edge 
 The main goals of this collaborative project are to:
 
 1. study the VAST 2025 Design Challenge requirements;
-2. investigate visual encodings and interaction techniques for knowledge-graph exploration;
-3. design a visual analytics solution that supports one or more of the challenge tasks;
+2. investigate visual encodings and interaction techniques for knowledge-graph exploration; (see [Notes of meeting 1](docs/meeting_1_notes.md))
+3. design a visual analytics solution that supports the challenge tasks;
 4. document the design rationale, limitations, and intended user workflow;
 5. coordinate the contributions of the student team.
 
