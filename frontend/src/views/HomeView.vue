@@ -1,4 +1,6 @@
 <script setup>
+import DashboardCard from '../components/DashboardCard.vue'
+
 const cards = [
   {
     title: 'Node-link diagram',
@@ -37,16 +39,13 @@ const cards = [
 
 <template>
   <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-    <article
+    <DashboardCard
       v-for="card in cards"
       :key="card.title"
-      class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+      :title="card.title"
+      :subtitle="card.subtitle"
     >
-      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">{{ card.subtitle }}</p>
-      <h3 class="mt-1 text-base font-semibold text-slate-900">{{ card.title }}</h3>
-      <div class="mt-4 rounded-lg border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
-        {{ card.content }}
-      </div>
-    </article>
+      {{ card.content }}
+    </DashboardCard>
   </section>
 </template>
