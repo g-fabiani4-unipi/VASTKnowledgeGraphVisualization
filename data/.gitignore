@@ -1,0 +1,2 @@
+# Ignore all files in subfolders of data (prevents from tracking data files)
+*/*
