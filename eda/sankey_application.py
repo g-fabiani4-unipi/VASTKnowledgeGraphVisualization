@@ -109,7 +109,23 @@ def create_app(data):
                     children=[
                         'Edge type:',
                         dcc.Dropdown(
-                            options=data.edge_type.value_counts().index, id='dropdown',
+                            options=data.edge_type.value_counts().index, id='edge_type',
+                        ),
+                    ],
+                ),
+                html.Label(
+                    children=[
+                        'Source Type:',
+                        dcc.Dropdown(
+                            options=data.source_type.value_counts().index, id='source_type',
+                        ),
+                    ],
+                ),
+                html.Label(
+                    children=[
+                        'Target Type:',
+                        dcc.Dropdown(
+                            options=data.target_type.value_counts().index, id='target_type',
                         ),
                     ],
                 ),
@@ -125,11 +141,15 @@ def create_app(data):
     @callback(
         Output(component_id='graph', component_property='figure'),
         Input(component_id='radio', component_property='value'),
-        Input(component_id='dropdown', component_property='value'),
+        Input(component_id='edge_type', component_property='value'),
+        Input(component_id='source_type', component_property='value'),
+        Input(component_id='target_type', component_property='value'),
     )
-    def update_graph(color, edge_type):
+    def update_graph(color, edge_type, source_type, target_type):
         """Create sankey plot."""
         filtered_data = data[data.edge_type == edge_type] if edge_type else data
+        filtered_data = filtered_data[filtered_data.source_type == source_type] if source_type else filtered_data
+        filtered_data = filtered_data[filtered_data.target_type == target_type] if target_type else filtered_data
         color = None if color == 'none' else filtered_data[f'{color}_color']
 
         source_dim = go.parcats.Dimension(
@@ -141,14 +161,27 @@ def create_app(data):
             values=filtered_data.target_type,
             label='Target type',
         )
-        fig = go.Figure(
-            data=[
+        if edge_type:
+
+            fig = go.Figure(
+                data=[
+                    go.Parcats(
+                        dimensions=[source_dim, target_dim],
+                        line={'color': color, 'shape': 'hspline'},
+                    ),
+                ],
+            )
+        else:
+            edge_dim = go.parcats.Dimension(
+                values=filtered_data.edge_type,
+                label='Edge Type',
+                )
+            fig = go.Figure(data=[
                 go.Parcats(
-                    dimensions=[source_dim, target_dim],
+                    dimensions=[source_dim, edge_dim, target_dim],
                     line={'color': color, 'shape': 'hspline'},
                 ),
-            ],
-        )
+            ])
         return fig
 
     return app
