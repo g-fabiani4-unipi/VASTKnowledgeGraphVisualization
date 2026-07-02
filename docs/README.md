@@ -94,15 +94,15 @@ too slow at this scale.
 
 ## Where each piece is documented
 
-| Topic                                           | Where                                                               |
-| ----------------------------------------------- | ------------------------------------------------------------------- |
-| Design rationale, datasets, scope (this page)   | [README.md](README.md)                                              |
-| Cross-panel contract (bitmaps, mask-only, Lock) | [contract.md](contract.md)                                          |
-| Backend architecture, endpoints, setup, tests   | [`api/README.md`](../api/README.md)                                 |
-| Frontend architecture, design system, setup     | [`frontend/README.md`](../frontend/README.md)                       |
-| Panel catalogue, spec format, authoring how-to  | [`frontend/src/panels/README.md`](../frontend/src/panels/README.md) |
-| Data download and creation scripts              | [`data/README.md`](../data/README.md)                               |
-| Meeting notes and wireframes (archive)          | [history/](history/)                                                |
+| Topic                                                                              | Where                                                               |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Design rationale, datasets, scope (this page)                                      | [README.md](README.md)                                              |
+| Cross-panel contract (bitmaps, mask-only, Lock)                                    | [contract.md](contract.md)                                          |
+| Backend architecture, endpoints, setup, tests                                      | [`api/README.md`](../api/README.md)                                 |
+| Frontend architecture, design system, setup                                        | [`frontend/README.md`](../frontend/README.md)                       |
+| Panel catalogue, spec format, authoring how-to                                     | [`frontend/src/panels/README.md`](../frontend/src/panels/README.md) |
+| Data download and creation scripts                                                 | [`data/README.md`](../data/README.md)                               |
+| Meeting notes and wireframes, graph view design and edge overview design (archive) | [history/](history/)                                                |
 
 ## Team
 
