@@ -16,20 +16,20 @@ The full cross-panel contract (bitmaps, mask-only, Lock, selection caps) is in
 
 ## Catalogue
 
-| Panel | ID | Component | Status |
-|---|---|---|---|
-| Degree Distribution | `degree` | `DegreeDistribution.vue` | ✓ implemented |
-| Connected Components | `connectivity` | `ConnectedComponents.vue` | ✓ implemented |
-| PageRank | `cent_pagerank` | `CentralityPanel.vue` (`measure: 'pagerank'`) | ✓ implemented |
-| Eigenvector | `cent_eigenvector` | `CentralityPanel.vue` (`measure: 'eigenvector'`) | ✓ implemented |
-| Betweenness | `cent_betweenness` | `CentralityPanel.vue` (`measure: 'betweenness'`) | ✓ implemented |
-| Closeness | `cent_closeness` | `CentralityPanel.vue` (`measure: 'closeness'`) | ✓ implemented |
-| Centrality Comparison | `cent_compare` | `CentralityComparison.vue` | ✓ implemented |
-| Ego Network | `ego` | `EgoNetworkPanel.vue` | ✓ implemented |
-| Ego Comparison | `ego_compare` | `EgoComparisonPanel.vue` | ✓ implemented |
-| Type Mixing Matrix | `type_mixing` | `TypeMixingMatrix.vue` | ✓ implemented |
-| Edge Flow | `edge_flow` | `EdgeFlow.vue` | ✓ implemented |
-| Activity Timeline | `timeline_node` / `timeline_edge` | `ActivityTimeline.vue` (`mode: 'node' \| 'edge'`) | ✓ implemented |
+| Panel                 | ID                                | Component                                         | Status        |
+| --------------------- | --------------------------------- | ------------------------------------------------- | ------------- |
+| Degree Distribution   | `degree`                          | `DegreeDistribution.vue`                          | ✓ implemented |
+| Connected Components  | `connectivity`                    | `ConnectedComponents.vue`                         | ✓ implemented |
+| PageRank              | `cent_pagerank`                   | `CentralityPanel.vue` (`measure: 'pagerank'`)     | ✓ implemented |
+| Eigenvector           | `cent_eigenvector`                | `CentralityPanel.vue` (`measure: 'eigenvector'`)  | ✓ implemented |
+| Betweenness           | `cent_betweenness`                | `CentralityPanel.vue` (`measure: 'betweenness'`)  | ✓ implemented |
+| Closeness             | `cent_closeness`                  | `CentralityPanel.vue` (`measure: 'closeness'`)    | ✓ implemented |
+| Centrality Comparison | `cent_compare`                    | `CentralityComparison.vue`                        | ✓ implemented |
+| Ego Network           | `ego`                             | `EgoNetworkPanel.vue`                             | ✓ implemented |
+| Ego Comparison        | `ego_compare`                     | `EgoComparisonPanel.vue`                          | ✓ implemented |
+| Type Mixing Matrix    | `type_mixing`                     | `TypeMixingMatrix.vue`                            | ✓ implemented |
+| Edge Flow             | `edge_flow`                       | `EdgeFlow.vue`                                    | ✓ implemented |
+| Activity Timeline     | `timeline_node` / `timeline_edge` | `ActivityTimeline.vue` (`mode: 'node' \| 'edge'`) | ✓ implemented |
 
 `AttributeFilters.vue` (`mode: 'node' | 'edge'`) is the sidebar filter editor — **not**
 in the panel registry; `GuideSidebar` mounts it directly when
@@ -91,7 +91,7 @@ panels/
   the store tracks overflow for the "+N more" caption. `EgoComparisonPanel` caps on read
   (`ids.slice(0, MAX_LAYERS)`).
 - **Isolation (Lock)** freezes a panel on a deep-cloned snapshot of filters + selection
-  + all masks; `usePanelContext` resolves to the snapshot while frozen.
+  - all masks; `usePanelContext` resolves to the snapshot while frozen.
 
 ## Authoring a new panel
 
@@ -99,29 +99,31 @@ Minimal skeleton (see existing panels for measure-specific variations):
 
 ```vue
 <script setup>
-import { ref, toRef, watch, nextTick } from 'vue'
-import { useFooData } from '@/composables/useFoo.js'
-import { usePanel } from './usePanel.js'
-import { useD3Chart } from './useD3Chart.js'
-import ControlSection from './controls/ControlSection.vue'
+import { ref, toRef, watch, nextTick } from "vue";
+import { useFooData } from "@/composables/useFoo.js";
+import { usePanel } from "./usePanel.js";
+import { useD3Chart } from "./useD3Chart.js";
+import ControlSection from "./controls/ControlSection.vue";
 
 const props = defineProps({
-  panelSpec:      { type: Object, required: true },
-  schema:         { type: Object, default: null },
-  graphId:        { type: String, default: null },
-  widened:        { type: Boolean, default: false },
+  panelSpec: { type: Object, required: true },
+  schema: { type: Object, default: null },
+  graphId: { type: String, default: null },
+  widened: { type: Boolean, default: false },
   controlsTarget: { type: String, default: null },
-})
-defineEmits(['request-widen', 'request-shrink'])
+});
+defineEmits(["request-widen", "request-shrink"]);
 
-const { data, loading, error } = useFooData(toRef(props, 'graphId'))
-const { controls, updateControl } = usePanel(props, props.panelSpec.id, data)
+const { data, loading, error } = useFooData(toRef(props, "graphId"));
+const { controls, updateControl } = usePanel(props, props.panelSpec.id, data);
 
-const containerRef = ref(null)
-function render() { /* d3 logic — reads data.value, controls.value, props.schema */ }
+const containerRef = ref(null);
+function render() {
+  /* d3 logic — reads data.value, controls.value, props.schema */
+}
 
-watch([data, controls], () => nextTick(render), { deep: true })
-useD3Chart(containerRef, render)
+watch([data, controls], () => nextTick(render), { deep: true });
+useD3Chart(containerRef, render);
 </script>
 
 <template>
@@ -130,7 +132,11 @@ useD3Chart(containerRef, render)
       <ControlSection title="View"><!-- controls --></ControlSection>
     </div>
   </Teleport>
-  <div ref="containerRef" class="chart-elev w-full" style="aspect-ratio: 4/3; position: relative;" />
+  <div
+    ref="containerRef"
+    class="chart-elev w-full"
+    style="aspect-ratio: 4/3; position: relative;"
+  />
 </template>
 ```
 
@@ -156,10 +162,11 @@ only for the `default` field by `usePanel.js`; keep entries minimal
 - **Stats:** `pearson(xs, ys)`, `spearman(xs, ys)`, `summaryStats(seq)`
   (mean/median/IQR/whisker bounds).
 - **D3 helpers:** `drawAxes`, `drawGrid`, `drawLine`,
-  `drawTypeLegend(svg, totalW, types, typeColor)`.
+  `drawTypeLegend(svg, totalW, types, typeColor)`,`resizeAndRenderFactory(containerRef, renderFunc)`.
 - **Tooltips:** `makeTooltip(container)`, `showTip`, `hideTip`, `attachVLineTooltip`.
   Theory links: `theoryLinkClass(on)`.
 - **Formatters:** `formatAttrSummary(attr)`, `formatCoverage(coverage)`.
+- **Conversion utilities**: `radiansToDegrees`.
 
 Node-type colours come from `@/composables/useNodeTypeColors.js`, not from `shared.js` —
 share that mapping across panels rather than instantiating a local `d3.scaleOrdinal`.
@@ -169,9 +176,9 @@ Use `seededUnit(id)` for deterministic jitter, never `Math.random()` in a render
 
 Contributions to this folder, from the git history:
 
-- **Francesco Secoli** ([@sclfnc](https://github.com/sclfnc)) — all twelve implemented
+- **Francesco Secoli** ([@sclfnc](https://github.com/sclfnc)) — all twelve Guide-view
   panels, the registry and spec format, the controls drawer system, `useD3Chart`,
   `shared.js`, and `layeredGraph.js`.
 - **Giulia Fabiani** ([@g-fabiani4](https://github.com/g-fabiani4-unipi)) — Graph-view
   panel specs in the registry with per-view panel filtering; shared fallback color
-  constant in `shared.js`.
+  constant, adaptation of `drawAxes` to dynamic plots, radians to degrees conversion, `resizeAndRenderFactory` in `shared.js`.
