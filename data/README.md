@@ -51,7 +51,7 @@ python3 data/download_github_zip.py \
 
 `create_datasets.py` creates two additional Knowledge Graphs which can be used to try out the application:
 
-- `genre_influence.json` relationships between songs and albums from the VAST 2025 MC1 dataset, organized by musical genre.
+- `genre_influence.json` relationships between songs and albums from the [VAST 2025 MC1](https://vast-challenge.github.io/2025/MC1.html) dataset, organized by musical genre.
 - `asoiaf_interaction.json` undirected interaction graph of characters from JRR Martin's _A Song of Ice and Fire_ series, based from data from [https://github.com/mathbeveridge/asoiaf](https://github.com/mathbeveridge/asoiaf) by [Andrew Beveridge](https://github.com/mathbeveridge) released under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ### Prerequisites

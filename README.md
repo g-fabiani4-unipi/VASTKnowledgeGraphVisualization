@@ -27,30 +27,30 @@ folder.
 
 ## Repository layout
 
-| Path | What's inside |
-| --- | --- |
-| [`frontend/`](frontend/) | Vue 3 + D3 single-page app: the dashboard, its panels, stores, and composables. |
-| [`api/`](api/) | FastAPI backend: graph loading, indices, and per-panel analysis endpoints. |
-| [`docs/`](docs/) | Design documentation: what Telescope is, the cross-panel contract, meeting history. |
-| [`data/`](data/) | Dataset download helper. The datasets themselves are not committed. |
+| Path                     | What's inside                                                                       |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| [`frontend/`](frontend/) | Vue 3 + D3 single-page app: the dashboard, its panels, stores, and composables.     |
+| [`api/`](api/)           | FastAPI backend: graph loading, indices, and per-panel analysis endpoints.          |
+| [`docs/`](docs/)         | Design documentation: what Telescope is, the cross-panel contract, meeting history. |
+| [`data/`](data/)         | Dataset download and creations helpers. The datasets themselves are not committed.  |
 
 ## Documentation
 
-| Topic | Where |
-| --- | --- |
-| Design rationale, audiences, scope | [`docs/README.md`](docs/README.md) |
-| Cross-panel interaction contract | [`docs/contract.md`](docs/contract.md) |
-| Backend architecture, endpoints, setup | [`api/README.md`](api/README.md) |
-| Frontend architecture, conventions, setup | [`frontend/README.md`](frontend/README.md) |
-| Panel catalogue and authoring guide | [`frontend/src/panels/README.md`](frontend/src/panels/README.md) |
-| Meeting notes and early wireframes | [`docs/history/`](docs/history/) |
+| Topic                                     | Where                                                            |
+| ----------------------------------------- | ---------------------------------------------------------------- |
+| Design rationale, audiences, scope        | [`docs/README.md`](docs/README.md)                               |
+| Cross-panel interaction contract          | [`docs/contract.md`](docs/contract.md)                           |
+| Backend architecture, endpoints, setup    | [`api/README.md`](api/README.md)                                 |
+| Frontend architecture, conventions, setup | [`frontend/README.md`](frontend/README.md)                       |
+| Panel catalogue and authoring guide       | [`frontend/src/panels/README.md`](frontend/src/panels/README.md) |
+| Meeting notes and early wireframes        | [`docs/history/`](docs/history/)                                 |
 
 ## Stack
 
-| Area | Tech |
-| --- | --- |
+| Area     | Tech                                                                                |
+| -------- | ----------------------------------------------------------------------------------- |
 | Frontend | Vue 3 · Vite · Pinia · Vue Router · Tailwind CSS v4 · D3 · Lucide · @vueform/slider |
-| Backend | FastAPI · NetworkX · NetworKit (centralities) · powerlaw (distribution fits) |
+| Backend  | FastAPI · NetworkX · NetworKit (centralities) · powerlaw (distribution fits)        |
 
 ## Team
 

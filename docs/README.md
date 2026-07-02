@@ -1,6 +1,6 @@
 # Telescope — Design
 
-> *Zoom into your graph.* A visual-analytics prototype for the first exploration of
+> _Zoom into your graph._ A visual-analytics prototype for the first exploration of
 > attributed knowledge graphs. Load a graph and get its main metrics computed,
 > visualised, and interactively explorable. No notebook, no code.
 
@@ -55,6 +55,14 @@ through **auto-promotion**: that attribute becomes the effective type everywhere
 colours, legends, chip group. The two larger built-ins carry real `Node Type` /
 `Edge Type` set by their loaders.
 
+## Knowledge Graphs
+
+In order to use Telescope with a Knowledge Graph, we recommend you download a dataset from a recent VAST Challenge.
+You may use the helpers in the [`data`](../data/README.md) directory to download any such dataset and to create two new datasets:
+
+- `genre_influence.json` relationships between songs and albums from the [VAST 2025 MC1](https://vast-challenge.github.io/2025/MC1.html) dataset, organized by musical genre (directed).
+- `asoiaf_interaction.json` undirected interaction graph of characters from JRR Martin's _A Song of Ice and Fire_ series, based from data from [https://github.com/mathbeveridge/asoiaf](https://github.com/mathbeveridge/asoiaf) by [Andrew Beveridge](https://github.com/mathbeveridge) released under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 ## Scope and limitations
 
 Design decisions, not oversights:
@@ -66,7 +74,7 @@ Design decisions, not oversights:
 - **Scale ceiling ~100K edges.** Frontend SoA + bitset and backend NetworKit handle
   MC1 and MovieLens comfortably. Far larger graphs would need a binary wire format and
   server-side masking — out of scope on purpose.
-- **No layout breadth.** Not a Gephi replacement. Telescope covers the *exploratory*
+- **No layout breadth.** Not a Gephi replacement. Telescope covers the _exploratory_
   phase that comes before a full layout/community workflow: the moment when the
   analyst has not yet decided which metric matters.
 - **Mask-only everywhere but two count views.** A documented choice (see
@@ -86,15 +94,15 @@ too slow at this scale.
 
 ## Where each piece is documented
 
-| Topic | Where |
-| --- | --- |
-| Design rationale, datasets, scope (this page) | [README.md](README.md) |
-| Cross-panel contract (bitmaps, mask-only, Lock) | [contract.md](contract.md) |
-| Backend architecture, endpoints, setup, tests | [`api/README.md`](../api/README.md) |
-| Frontend architecture, design system, setup | [`frontend/README.md`](../frontend/README.md) |
-| Panel catalogue, spec format, authoring how-to | [`frontend/src/panels/README.md`](../frontend/src/panels/README.md) |
-| Data download script | [`data/README.md`](../data/README.md) |
-| Meeting notes and wireframes (archive) | [history/](history/) |
+| Topic                                           | Where                                                               |
+| ----------------------------------------------- | ------------------------------------------------------------------- |
+| Design rationale, datasets, scope (this page)   | [README.md](README.md)                                              |
+| Cross-panel contract (bitmaps, mask-only, Lock) | [contract.md](contract.md)                                          |
+| Backend architecture, endpoints, setup, tests   | [`api/README.md`](../api/README.md)                                 |
+| Frontend architecture, design system, setup     | [`frontend/README.md`](../frontend/README.md)                       |
+| Panel catalogue, spec format, authoring how-to  | [`frontend/src/panels/README.md`](../frontend/src/panels/README.md) |
+| Data download and creation scripts              | [`data/README.md`](../data/README.md)                               |
+| Meeting notes and wireframes (archive)          | [history/](history/)                                                |
 
 ## Team
 
