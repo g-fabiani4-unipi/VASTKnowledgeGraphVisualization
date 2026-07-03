@@ -16,6 +16,17 @@ The full cross-panel contract (bitmaps, mask-only, Lock, selection caps) is in
 
 ## Catalogue
 
+### Graph View
+
+| Panel             | ID                             | Component                        | Status        |
+| ----------------- | ------------------------------ | -------------------------------- | ------------- |
+| Node-link Diagram | `graph_node_link`              | `NotImplementedStub.vue`         | planned       |
+| Ego Network       | `graph_ego`                    | `NotImplementedStub.vue`         | planned       |
+| Edge Types        | `grap_edge_types`              | `EdgeTypes.vue`                  | ✓ implemented |
+| Edge Flows        | `graph_sankey` / `graph_chord` | `SankeyDiagram` / `ChordDiagram` | ✓ implemented |
+
+### Guide View
+
 | Panel                 | ID                                | Component                                         | Status        |
 | --------------------- | --------------------------------- | ------------------------------------------------- | ------------- |
 | Degree Distribution   | `degree`                          | `DegreeDistribution.vue`                          | ✓ implemented |
@@ -45,7 +56,7 @@ panels/
 ├── index.js                    # ALL_SPECS + PANEL_SPECS (filtered export) + SECTIONS
 ├── usePanel.js                 # initializes per-panel `controls` from controlsSchema.default
 ├── useD3Chart.js               # ResizeObserver + RAF wrapper for static D3 charts
-├── shared.js                   # D3 utilities (scales, axes, colors, stats, formatters, tooltips)
+├── shared.js                   # D3 utilities (scales, axes, colors, stats, formatters, tooltips, conversion utils)
 ├── layeredGraph.js             # pure helpers (fromEgoPayload, mergeLayers, filterIntersection) for ego panels
 ├── *.vue                       # one component per panel (see the catalogue above)
 ├── NotImplementedStub.vue      # placeholder for planned panels
@@ -179,6 +190,5 @@ Contributions to this folder, from the git history:
 - **Francesco Secoli** ([@sclfnc](https://github.com/sclfnc)) — all twelve Guide-view
   panels, the registry and spec format, the controls drawer system, `useD3Chart`,
   `shared.js`, and `layeredGraph.js`.
-- **Giulia Fabiani** ([@g-fabiani4](https://github.com/g-fabiani4-unipi)) — Graph-view
-  panel specs in the registry with per-view panel filtering; shared fallback color
+- **Giulia Fabiani** ([@g-fabiani4](https://github.com/g-fabiani4-unipi)) — Graph-view panels for edge overview, per-view panel filtering; shared fallback color
   constant, adaptation of `drawAxes` to dynamic plots, radians to degrees conversion, `resizeAndRenderFactory` in `shared.js`.
